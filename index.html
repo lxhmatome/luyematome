@@ -271,6 +271,13 @@
             border-color: #b8a3c9;
         }
 
+        .search-hint {
+            font-size: 0.72em;
+            color: #999;
+            margin-top: 6px;
+            line-height: 1.4;
+        }
+
         .filters {
             display: none;
         }
@@ -578,6 +585,7 @@
                         </ul>
                         <p><strong>关于翻译：</strong>由于我的日语能力有限，目前日文翻译使用的是Claude AI辅助翻译。您也可以使用网站的Google翻译功能，或直接复制文字自行翻译。另外我并没有看过吹替版和字幕版，不知道日语台词原文是什么，因此日文翻译中涉及到台词的部分肯定会有出入。</p>
                         <p>原本是个人总结各种捏他用的，不知不觉就积攒了很多内容。希望能帮助大家更好地了解鹿野这个角色！</p>
+                        <p><strong>📮 联系方式：</strong>如果有任何问题或建议请直接私信我。X账号：@biymon3</p>
 
                     </div>
                     <a class="notice-btn" href="https://translate.google.com/" target="_blank">
@@ -608,6 +616,7 @@
                         <p><strong>翻訳について：</strong>私の語学力不足により、現在日本語訳はClaude AIの補助を利用しています。サイトのGoogle翻訳機能もご利用いただけますし、テキストを直接コピーしてご自身で翻訳していただくことも可能です。あと吹き替え版や字幕版を見たことがないため、日本語の台詞の原文がわかりません。そのため、台詞に関する日本語翻訳は公式版と異なる場合があります。
                         </p>
                         <p>元々は自分用の参考資料としてまとめていたものですが、気づいたら内容が増えてきたので、ウェブサイトとして整理しました。この資料サイトを通じて、皆さんが鹿野というキャラクターをもっと深く知ることができたら嬉しいです！</p>
+                        <p>ご質問やご意見がございましたら、お気軽にDMでご連絡ください。Xアカウント：@biymon3</p>
                     </div>
                     <div class="notice-note">※ 此翻译由 Claude AI 辅助完成 / Claude AIによる翻訳</div>
                 </div>
@@ -616,6 +625,7 @@
 
         <div class="search-bar">
             <input type="text" id="search" placeholder="搜索... / 検索...">
+            <div class="search-hint">💡 支持人名多种写法搜索，如：小黑/小黒/シャオヘイ，无限/無限/ムゲン 等 / キャラクター名の様々な表記で検索できます（例：小黑/小黒/シャオヘイ、無限/∞/ムゲン など）</div>
         </div>
 
         <div class="stats" id="stats"></div>
@@ -723,11 +733,38 @@
             document.getElementById('toc-content').innerHTML = html;
         }
 
+        // 人名映射表 - 所有变体都会互相匹配
+        const nameVariants = [
+            ['小黑', '小黒', 'シャオヘイ', 'xiaohei'],
+            ['无限', '無限', '∞', 'ムゲン', 'mugen'],
+            ['鹿野', 'ルーイエ', 'luye'],
+            ['皆逆荒', 'ジェーニーホアン', 'jienihuang'],
+            ['泽宇', '澤宇', 'ジーユー', 'zeyu'],
+            ['晴岚', '晴嵐', 'qinglan']
+        ];
+
+        function normalizeSearchTerm(term) {
+            // 如果搜索词匹配某个人名的任意变体，返回所有变体
+            const lowerTerm = term.toLowerCase();
+            for (const variants of nameVariants) {
+                if (variants.some(v => v.toLowerCase() === lowerTerm || v.toLowerCase().includes(lowerTerm))) {
+                    return variants;
+                }
+            }
+            return [term];
+        }
+
         function render() {
             const filtered = data.filter(item => {
-                const matchSearch = searchTerm === '' || 
-                    JSON.stringify(item).toLowerCase().includes(searchTerm.toLowerCase());
-                return matchSearch;
+                if (searchTerm === '') return true;
+
+                const itemStr = JSON.stringify(item).toLowerCase();
+                const searchVariants = normalizeSearchTerm(searchTerm);
+
+                // 如果任一变体匹配，就返回true
+                return searchVariants.some(variant =>
+                    itemStr.includes(variant.toLowerCase())
+                );
             });
 
             const content = document.getElementById('content');
