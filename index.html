@@ -239,9 +239,9 @@
         }
 
         .notice-btn:hover {
-            background: #8b7a9b;
-            color: white;
-            border-color: #8b7a9b;
+            background: #f1ebf7;
+            color: #6d5d82;
+            border-color: #c3b2d6;
         }
 
         .notice-note {
@@ -250,6 +250,58 @@
             margin-top: 6px;
             font-style: italic;
         }
+
+        /* 更新履历 */
+        .changelog {
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #e8e8e8;
+        }
+
+        .changelog > summary {
+            list-style: none;
+            cursor: pointer;
+            font-size: 0.85em;
+            color: #8b7a9b;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            user-select: none;
+        }
+
+        .changelog > summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .changelog > summary::after {
+            content: '▸';
+            font-size: 0.9em;
+            transition: transform 0.2s;
+        }
+
+        .changelog[open] > summary::after {
+            transform: rotate(90deg);
+        }
+
+        .changelog-body {
+            margin-top: 18px;
+        }
+
+        .changelog-entry + .changelog-entry {
+            margin-top: 22px;
+        }
+
+        .changelog-date {
+            font-family: 'SF Mono', 'Monaco', 'Consolas', monospace;
+            font-size: 0.8em;
+            color: #b8a3c9;
+            font-weight: 500;
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            border-bottom: 1px dashed #ece7f1;
+        }
+
 
         .search-bar {
             margin-bottom: 20px;
@@ -405,9 +457,9 @@
         }
 
         .translate-btn:hover {
-            background: #8b7a9b;
-            color: white;
-            border-color: #8b7a9b;
+            background: #f1ebf7;
+            color: #6d5d82;
+            border-color: #c3b2d6;
         }
 
         .detail-link {
@@ -499,6 +551,344 @@
             font-size: 0.9em;
         }
 
+        /* ===== 官方海报：编辑式列表（无卡片，细分隔线） ===== */
+        .poster-list {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .poster-item {
+            padding: 16px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .poster-item:first-child {
+            padding-top: 0;
+        }
+
+        .poster-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .poster-cn {
+            font-size: 0.92em;
+            color: #3a3a3a;
+            line-height: 1.7;
+            white-space: pre-wrap;
+        }
+
+        .poster-jp {
+            font-size: 0.82em;
+            color: #9a9a9a;
+            line-height: 1.6;
+            margin-top: 4px;
+            white-space: pre-wrap;
+        }
+
+        .poster-link {
+            display: block;
+            text-align: right;
+            margin-top: 8px;
+            font-size: 0.78em;
+            color: #8b7a9b;
+            text-decoration: none;
+        }
+
+        .poster-link:hover {
+            text-decoration: underline;
+        }
+
+        /* ===== 从无到有：链接清单 / 目录式（前导虚线 + 箭头） ===== */
+        .sketch-list {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sketch-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 11px 2px;
+            border-bottom: 1px solid #f1f1f1;
+            color: #555;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .sketch-item:last-child {
+            border-bottom: none;
+        }
+
+        .sketch-name {
+            flex-shrink: 0;
+            font-size: 0.92em;
+        }
+
+        .sketch-leader {
+            flex: 1;
+            height: 0;
+            border-bottom: 1px dotted #d8d2e0;
+        }
+
+        .sketch-arrow {
+            flex-shrink: 0;
+            font-size: 0.9em;
+            color: #c0b6cf;
+            transition: color 0.2s, transform 0.2s;
+        }
+
+        .sketch-item:hover {
+            color: #8b7a9b;
+        }
+
+        .sketch-item:hover .sketch-leader {
+            border-color: #b8a3c9;
+        }
+
+        .sketch-item:hover .sketch-arrow {
+            color: #8b7a9b;
+            transform: translateX(3px);
+        }
+
+        /* ===== 颜文字系列 ===== */
+        .kao-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 8px;
+        }
+
+        .kao-card {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 52px;
+            padding: 8px 10px;
+            border: 1px solid #eee;
+            border-radius: 6px;
+            background: #fff;
+            color: #444;
+            text-decoration: none;
+            text-align: center;
+            transition: all 0.2s;
+            word-break: break-all;
+        }
+
+        .kao-card:hover {
+            border-color: #b8a3c9;
+            background: #faf7fd;
+        }
+
+        .kao-text {
+            font-size: 0.9em;
+            line-height: 1.5;
+        }
+
+        /* 颜文字子分组标题 */
+        .kao-subhead {
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+            font-size: 0.95em;
+            font-weight: 500;
+            color: #6d5d82;
+            margin: 26px 0 12px;
+        }
+
+        .kao-subhead:first-of-type {
+            margin-top: 8px;
+        }
+
+        .kao-subhead .kao-cnt {
+            font-size: 0.78em;
+            font-weight: 400;
+            color: #b3a7c0;
+        }
+
+        /* FA 同人警告框（琥珀色，区别于紫色主题） */
+        .fa-warning {
+            border: 1px solid #ecd9ad;
+            background: #fdf8ec;
+            border-radius: 8px;
+            padding: 13px 16px;
+            margin-bottom: 14px;
+            font-size: 0.82em;
+            line-height: 1.65;
+        }
+
+        .fa-warn-cn {
+            color: #97793a;
+        }
+
+        .fa-warn-jp {
+            color: #a98a52;
+            margin-top: 8px;
+            padding-top: 8px;
+            border-top: 1px dashed #ece0c2;
+        }
+
+        .fa-warn-note {
+            color: #c2a86a;
+            font-size: 0.85em;
+            font-style: italic;
+            margin-top: 7px;
+        }
+
+        /* FA 同人小标签（单条目，可点击展开） */
+        .fa-mini {
+            margin: 0 0 14px;
+        }
+
+        .fa-mini > summary {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            list-style: none;
+            cursor: pointer;
+            font-size: 0.72em;
+            color: #97793a;
+            background: #fdf6e6;
+            border: 1px solid #ecd9ad;
+            border-radius: 12px;
+            padding: 2px 10px;
+            transition: background 0.2s;
+            user-select: none;
+        }
+
+        .fa-mini > summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .fa-mini > summary::after {
+            content: '▸';
+            font-size: 0.85em;
+            transition: transform 0.2s;
+        }
+
+        .fa-mini[open] > summary::after {
+            transform: rotate(90deg);
+        }
+
+        .fa-mini > summary:hover {
+            background: #fbefd2;
+        }
+
+        .fa-mini-body {
+            margin-top: 8px;
+            border: 1px solid #ecd9ad;
+            background: #fdf8ec;
+            border-radius: 8px;
+            padding: 12px 15px;
+            font-size: 0.82em;
+            line-height: 1.65;
+        }
+
+        /* 表情包网格：略带强调的卡片，与 FA 区分 */
+        .kao-grid-sticker .kao-card {
+            border-color: #e3dcc4;
+            background: #fdfbf3;
+        }
+
+        .kao-grid-sticker .kao-card:hover {
+            border-color: #d8c98f;
+            background: #fbf7e8;
+        }
+
+        /* ===== 晚安图时间线（日期在左 · 竖线 · 夜间卡片在右） ===== */
+        .night-timeline {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        /* 贯穿的竖线，位于日期栏与卡片之间 */
+        .night-timeline::before {
+            content: '';
+            position: absolute;
+            top: 6px;
+            bottom: 6px;
+            left: 96px;
+            width: 2px;
+            background: #d9cce8;
+        }
+
+        .night-row {
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .night-date {
+            flex-shrink: 0;
+            width: 96px;
+            padding-right: 22px;
+            padding-top: 14px;
+            text-align: right;
+            font-family: 'SF Mono', 'Monaco', 'Consolas', monospace;
+            font-size: 0.76em;
+            color: #8b7a9b;
+            white-space: nowrap;
+        }
+
+        /* 右列：深色卡片 + 卡片下方操作行 */
+        .night-main {
+            position: relative;
+            flex: 1;
+            margin-left: 22px;
+        }
+
+        .night-card {
+            background: #2f2a47;
+            border: 1px solid #423b5e;
+            border-radius: 10px;
+            padding: 14px 18px;
+            color: #e8e3f5;
+        }
+
+        /* 圆点节点，压在竖线上 */
+        .night-main::before {
+            content: '';
+            position: absolute;
+            left: -26px;
+            top: 18px;
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: #8b7a9b;
+            box-shadow: 0 0 0 2px #fafafa;
+        }
+
+        .night-text {
+            font-size: 1.05em;
+            line-height: 1.6;
+            word-break: break-all;
+            white-space: pre-wrap;
+        }
+
+        /* 卡片下方的操作（复制 / 查看原帖），在浅色区，给卡片之间留出分隔 */
+        .night-actions {
+            display: flex;
+            gap: 18px;
+            align-items: center;
+            padding: 9px 4px 0;
+        }
+
+        .night-act {
+            font-family: inherit;
+            font-size: 0.74em;
+            color: #8b7a9b;
+            background: none;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .night-act:hover {
+            color: #6d5d82;
+            text-decoration: underline;
+        }
+
         @media (max-width: 768px) {
             .notice-content {
                 grid-template-columns: 1fr;
@@ -534,6 +924,24 @@
 
             h1 {
                 font-size: 1.3em;
+            }
+
+            /* 时间线在窄屏收窄日期栏 */
+            .night-timeline::before {
+                left: 66px;
+            }
+
+            .night-date {
+                width: 66px;
+                padding-right: 14px;
+            }
+
+            .night-main {
+                margin-left: 18px;
+            }
+
+            .night-main::before {
+                left: -22px;
             }
         }
     </style>
@@ -571,21 +979,23 @@
                         <ul class="notice-list">
                             <li>官方补充设定</li>
                             <li>电影中的有趣场景及容易被忽略的细节</li>
-                            <li>官方晚安图（整理中）</li>
-                            <li>官方海报（整理中）</li>
+                            <li>官方晚安图</li>
+                            <li>官方海报</li>
+                            <li>颜文字系列</li>
+                            <li>从无到有（分镜·原画·动画）</li>
                         </ul>
                         <p><strong>⚠️ 注意 ⚠️</strong></p>
                         <ul class="notice-list">
                             <li>内含剧透！</li>
                             <li>可能会打破你之前的脑补！</li>
-                            <li>如果你想亲自从电影中发掘更多细节，不建议继续继续看哦！</li>
+                            <li>如果你想亲自从电影中发掘更多细节，不建议继续看哦！</li>
                             <li>本站仅收录有明确来源的官方信息</li>
                             <li>关于电影场景，仅对画面进行客观描述（即仅陈述画面中正在发生的事情，不添加个人解读）</li>
                             <li>我个人的推测和想法会折叠隐藏在当前条目的最下方，这些内容可能会影响你自己的看法，请谨慎展开查看。</li>
                         </ul>
                         <p><strong>关于翻译：</strong>由于我的日语能力有限，目前日文翻译使用的是Claude AI辅助翻译。您也可以使用网站的Google翻译功能，或直接复制文字自行翻译。另外我并没有看过吹替版和字幕版，不知道日语台词原文是什么，因此日文翻译中涉及到台词的部分肯定会有出入。</p>
                         <p>原本是个人总结各种捏他用的，不知不觉就积攒了很多内容。希望能帮助大家更好地了解鹿野这个角色！</p>
-                        <p>如果有任何问题或建议请直接私信我。X账号：@biymon3</p>
+                        <p><strong>📮 联系方式：</strong>如果有任何问题或建议请直接私信我。X账号：@biymon3</p>
 
                     </div>
                     <a class="notice-btn" href="https://translate.google.com/" target="_blank">
@@ -600,8 +1010,10 @@
                         <ul class="notice-list">
                             <li>公式の補足設定</li>
                             <li>映画の中の面白いシーンや見落としがちなディテール</li>
-                            <li>公式おやすみ画像（整理中）</li>
-                            <li>公式ポスター（整理中）</li>
+                            <li>公式おやすみイラスト</li>
+                            <li>公式ポスター</li>
+                            <li>顔文字シリーズ</li>
+                            <li>絵コンテから完成まで</li>
                         </ul>
                         <p><strong>⚠️ 閲覧前の注意 ⚠️</strong></p>
                         <ul class="notice-list">
@@ -613,15 +1025,45 @@
                             <li>私個人の推測や考えは各項目の下に折りたたんで隠してあります。ご自身の考えに影響を与える可能性があるため、慎重に開いてくださいね。</li>
                         </ul>
 
-                        <p><strong>翻訳について：</strong>私の語学力不足により、現在日本語訳はClaude AIの補助を利用しています。サイトのGoogle翻訳機能もご利用いただけますし、テキストを直接コピーしてご自身で翻訳していただくことも可能です。あと吹き替え版や字幕版を見たことがないため、日本語の台詞の原文がわかりません。そのため、台詞に関する日本語翻訳は公式版と異なる場合があります。
+                        <p><strong>翻訳について：</strong>日本語が得意ではないため、現在日本語訳はClaude AIの力を借りて翻訳しています。サイトのGoogle翻訳機能もご利用いただけますし、テキストを直接コピーしてご自身で翻訳していただくことも可能です。あと吹き替え版や字幕版を見たことがないため、日本語の台詞の原文がわかりません。そのため、台詞に関する日本語翻訳は公式版と異なる場合があります。
                         </p>
-                        <p>元々は自分用の参考資料としてまとめていたものですが、気づいたら内容が増えてきたので、ウェブサイトとして整理しました。この資料サイトを通じて、皆さんが鹿野というキャラクターをもっと深く知ることができたら嬉しいです！</p>
+                        <p>元々は自分用の参考資料としてまとめていたものですが、気づいたら内容が増えてきたので、サイトとして整理しました。この資料サイトを通じて、皆さんが鹿野というキャラクターをもっと深く知ることができたら嬉しいです！</p>
                         <p>ご質問やご意見がございましたら、お気軽にDMでご連絡ください。Xアカウント：@biymon3</p>
                     </div>
-                    <div class="notice-note">※ 此翻译由 Claude AI 辅助完成 / Claude AIによる翻訳</div>
+                    <div class="notice-note">※ 此翻译由 Claude AI 辅助完成 / 翻訳：Claude AI</div>
                 </div>
             </div>
         </div>
+
+        <!-- 更新履历 -->
+        <details class="changelog">
+            <summary>🗓 更新履历 / 更新履歴</summary>
+            <div class="changelog-body">
+                <div class="changelog-entry">
+                    <div class="changelog-date">2026-06-16</div>
+                    <div class="notice-content">
+                        <div class="notice-lang">
+                            <div class="notice-lang-label">中文</div>
+                            <ul class="notice-list">
+                                <li>新增「颜文字系列」专区，按官方转发FA、官方表情包分类整理</li>
+                                <li>新增「晚安图时间线」，按发布日期排列</li>
+                                <li>新增「从无到有」</li>
+                                <li>官方海报整理完成</li>
+                            </ul>
+                        </div>
+                        <div class="notice-lang">
+                            <div class="notice-lang-label">日本語</div>
+                            <ul class="notice-list">
+                                <li>「顔文字シリーズ」コーナーを新設。公式がリポストしたファンアート・公式スタンプごとに分類</li>
+                                <li>「おやすみイラスト タイムライン」を新設。投稿日順に配置</li>
+                                <li>「絵コンテから完成まで」を新設</li>
+                                <li>公式ポスターの整理が完了</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </details>
 
         <div class="search-bar">
             <input type="text" id="search" placeholder="搜索... / 検索...">
@@ -645,6 +1087,8 @@
                     throw new Error('无法加载数据文件');
                 }
                 data = await response.json();
+                // 给每条数据附上稳定索引（不可枚举，避免污染搜索 JSON.stringify）
+                data.forEach((d, i) => Object.defineProperty(d, '_i', { value: i, enumerable: false }));
                 // 数据加载完成后初始化页面
                 renderToc();
                 render();
@@ -661,12 +1105,76 @@
             overlay.classList.toggle('show');
         }
 
-        function scrollToItem(index) {
-            const items = document.querySelectorAll('.item');
-            if (items[index]) {
-                items[index].scrollIntoView({ behavior: 'smooth', block: 'start' });
-                toggleDrawer();
+        function closeDrawer() {
+            document.getElementById('drawer').classList.remove('open');
+            document.getElementById('overlay').classList.remove('show');
+        }
+
+        function scrollToEntry(i) {
+            const el = document.getElementById('entry-' + i);
+            if (el) {
+                el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                closeDrawer();
             }
+        }
+
+        function scrollToSection(id) {
+            const el = document.getElementById(id);
+            if (el) {
+                el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                closeDrawer();
+            }
+        }
+
+        // 按 type 把数据分到不同区块
+        function categorize(list) {
+            const movie = [], poster = [], sketch = [], other = [];
+            const kaoFA = [], kaoSticker = [], kaoOther = [];
+            const night = [];   // 晚安图时间线：所有晚安图（纯晚安图 + 晚安图；颜文字）
+            list.forEach(item => {
+                const t = item.type || '';
+                const isKao = t.includes('颜文字');
+                const isNight = t.includes('晚安图');
+
+                // 晚安图一律进时间线（不管是否同时是颜文字）
+                if (isNight) night.push(item);
+
+                // 有时间戳且非颜文字/晚安图 → 电影时间轴
+                if (item.time && !isKao && !isNight) { movie.push(item); return; }
+
+                if (isKao) {
+                    // 晚安图；颜文字 只进时间线，不在颜文字区重复显示
+                    if (isNight) return;
+                    // 颜文字内再按性质细分：表情包 / FA同人 / 其它
+                    if (t.includes('表情包')) kaoSticker.push(item);
+                    else if (t.includes('FA')) kaoFA.push(item);
+                    else kaoOther.push(item);
+                    return;
+                }
+
+                if (isNight) return;            // 纯晚安图：只进时间线，不落入其它区
+
+                if (t === '官方海报') poster.push(item);
+                else if (t === '官方作画资料') sketch.push(item);
+                else other.push(item);
+            });
+            // 晚安图时间线：同一条微博可能既标了颜文字又单列，按 source 去重（保留有日期的那条），再按日期升序，无日期的排末尾
+            const seen = new Map();
+            night.forEach(item => {
+                const key = (firstUrl(item.details.source) || item.content || '').trim();
+                const ex = seen.get(key);
+                if (!ex) seen.set(key, item);
+                else if (!ex.details.date && item.details.date) seen.set(key, item);
+            });
+            const nightSorted = Array.from(seen.values()).sort((a, b) => {
+                const da = a.details.date || '', db = b.details.date || '';
+                if (da && db) return da < db ? -1 : da > db ? 1 : 0;
+                return da ? -1 : (db ? 1 : 0);
+            });
+
+            // kao 合计，供目录计数等使用
+            const kao = kaoFA.concat(kaoSticker, kaoOther);
+            return { movie, poster, sketch, kao, kaoFA, kaoSticker, kaoOther, night: nightSorted, other };
         }
 
         function copyText(text, button) {
@@ -689,41 +1197,64 @@
             });
         }
 
-        function renderToc() {
-            const movieItems = data.filter(item => item.time);
-            const otherItems = data.filter(item => !item.time);
+        function tocPreview(item) {
+            const s = item.content || '';
+            return esc(s.substring(0, 30) + (s.length > 30 ? '...' : ''));
+        }
 
+        function renderToc() {
+            const c = categorize(data);
             let html = '';
 
-            if (movieItems.length > 0) {
+            if (c.movie.length > 0) {
                 html += `
                     <div class="toc-section">
-                        <div class="toc-section-title">🎬 电影时间轴</div>
+                        <div class="toc-section-title">电影时间轴 / 映画</div>
                         <ul class="toc-list">
                 `;
-                movieItems.forEach((item, index) => {
-                    const preview = item.content.substring(0, 30) + (item.content.length > 30 ? '...' : '');
+                c.movie.forEach(item => {
                     html += `
-                        <li class="toc-list-item" onclick="scrollToItem(${index})">
+                        <li class="toc-list-item" onclick="scrollToEntry(${item._i})">
                             <span class="toc-time">${item.time}</span>
-                            <span>${preview}</span>
+                            <span>${tocPreview(item)}</span>
                         </li>
                     `;
                 });
                 html += '</ul></div>';
             }
 
-            if (otherItems.length > 0) {
+            if (c.other.length > 0) {
                 html += `
                     <div class="toc-section">
-                        <div class="toc-section-title">📝 其他资料</div>
+                        <div class="toc-section-title">其他资料 / その他</div>
                         <ul class="toc-list">
                 `;
-                otherItems.forEach((item, index) => {
-                    const preview = item.content.substring(0, 30) + (item.content.length > 30 ? '...' : '');
+                c.other.forEach(item => {
                     html += `
-                        <li class="toc-list-item" onclick="scrollToItem(${movieItems.length + index})">
-                            <span>${preview}</span>
+                        <li class="toc-list-item" onclick="scrollToEntry(${item._i})">
+                            <span>${tocPreview(item)}</span>
+                        </li>
+                    `;
+                });
+                html += '</ul></div>';
+            }
+
+            // 专题区块只放一个跳转入口，不逐条罗列（颜文字有几十条）
+            const quick = [];
+            if (c.poster.length > 0) quick.push(['poster-section', `官方海报 (${c.poster.length})`]);
+            if (c.sketch.length > 0) quick.push(['sketch-section', `从无到有 (${c.sketch.length})`]);
+            if (c.kao.length > 0) quick.push(['kao-section', `颜文字系列 (${c.kao.length})`]);
+            if (c.night.length > 0) quick.push(['night-section', `晚安图时间线 (${c.night.length})`]);
+            if (quick.length > 0) {
+                html += `
+                    <div class="toc-section">
+                        <div class="toc-section-title">专题 / 特集</div>
+                        <ul class="toc-list">
+                `;
+                quick.forEach(([id, label]) => {
+                    html += `
+                        <li class="toc-list-item" onclick="scrollToSection('${id}')">
+                            <span>${label}</span>
                         </li>
                     `;
                 });
@@ -770,8 +1301,7 @@
             const content = document.getElementById('content');
             const stats = document.getElementById('stats');
 
-            const movieItems = filtered.filter(item => item.time);
-            const otherItems = filtered.filter(item => !item.time);
+            const c = categorize(filtered);
 
             stats.textContent = `共 ${data.length} 条 / 显示 ${filtered.length} 条 (全${data.length}件 / 表示${filtered.length}件)`;
 
@@ -782,24 +1312,49 @@
 
             let html = '';
 
-            if (movieItems.length > 0) {
-                html += `
-                    <div class="section-header" id="movie-section">
-                        <div class="section-title">🎬 电影时间轴 / 映画タイムライン</div>
-                        <div class="section-subtitle">⏱ 时间标记为电影内的时间戳 / タイムスタンプは映画内の時刻</div>
-                    </div>
-                `;
-                html += movieItems.map((item, index) => renderItem(item, index)).join('');
+            if (c.movie.length > 0) {
+                html += sectionHeader('movie-section', '🎬 电影时间轴 / 映画タイムライン', '⏱ 时间标记为电影内的时间戳 / タイムスタンプは映画内の時刻');
+                html += c.movie.map(renderItem).join('');
             }
 
-            if (otherItems.length > 0) {
-                html += `
-                    <div class="section-header" id="other-section">
-                        <div class="section-title">📝 其他资料 / その他資料</div>
-                        <div class="section-subtitle">设定图、访谈等相关资料 / 設定資料、インタビューなど</div>
-                    </div>
-                `;
-                html += otherItems.map((item, index) => renderItem(item, index + movieItems.length)).join('');
+            if (c.other.length > 0) {
+                html += sectionHeader('other-section', '📝 其他资料 / その他資料', '设定图、访谈等相关资料 / 設定資料、インタビューなど');
+                html += c.other.map(renderItem).join('');
+            }
+
+            if (c.poster.length > 0) {
+                html += sectionHeader('poster-section', '🖼 官方海报 / 公式ポスター', '官方发布的宣传 / 纪念海报 / 公式の宣伝・記念ポスター');
+                html += '<div class="poster-list">' + c.poster.map(renderPoster).join('') + '</div>';
+            }
+
+            if (c.sketch.length > 0) {
+                html += sectionHeader('sketch-section', '✏️ 从无到有 / 絵コンテから完成まで', '分镜·原画·动画，点击跳转原帖 / コンテ・原画・動画、クリックで元投稿へ');
+                html += '<div class="sketch-list">' + c.sketch.map(renderSketch).join('') + '</div>';
+            }
+
+            if (c.kao.length > 0) {
+                html += sectionHeader('kao-section', '(｡•́‿•̀｡) 颜文字系列 / 顔文字シリーズ', '点击跳转原帖 / クリックで元投稿へ');
+
+                if (c.kaoFA.length > 0) {
+                    html += kaoSubHead('官方转发FA / 公式がリポストしたファンアート', c.kaoFA.length);
+                    html += faWarning();
+                    html += '<div class="kao-grid">' + c.kaoFA.map(renderKao).join('') + '</div>';
+                }
+
+                if (c.kaoSticker.length > 0) {
+                    html += kaoSubHead('官方表情包 / 公式スタンプ', c.kaoSticker.length);
+                    html += '<div class="kao-grid kao-grid-sticker">' + c.kaoSticker.map(renderKao).join('') + '</div>';
+                }
+
+                if (c.kaoOther.length > 0) {
+                    html += kaoSubHead('其它颜文字 / その他の顔文字', c.kaoOther.length);
+                    html += '<div class="kao-grid">' + c.kaoOther.map(renderKao).join('') + '</div>';
+                }
+            }
+
+            if (c.night.length > 0) {
+                html += sectionHeader('night-section', '🌙 晚安图时间线 / おやすみイラスト タイムライン', '');
+                html += '<div class="night-timeline">' + c.night.map(renderNight).join('') + '</div>';
             }
 
             content.innerHTML = html;
@@ -813,9 +1368,129 @@
             });
         }
 
-        function renderItem(item, index) {
+        function esc(s) {
+            return String(s == null ? '' : s)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;');
+        }
+
+        function firstUrl(source) {
+            if (!source) return null;
+            const u = source.split('\n')[0].trim();
+            return u.startsWith('http') ? u : null;
+        }
+
+        function sectionHeader(id, title, subtitle) {
             return `
-                <div class="item">
+                <div class="section-header" id="${id}">
+                    <div class="section-title">${title}</div>
+                    ${subtitle ? `<div class="section-subtitle">${subtitle}</div>` : ''}
+                </div>
+            `;
+        }
+
+        // 官方海报：编辑式列表（中文为主、日文转灰、右侧链接、细分隔线）
+        function renderPoster(item) {
+            const url = firstUrl(item.details.source);
+            return `
+                <div class="poster-item" id="entry-${item._i}">
+                    <div class="poster-cn">${esc(item.content)}</div>
+                    ${item.details.translation ? `<div class="poster-jp">${esc(item.details.translation)}</div>` : ''}
+                    ${url ? `<a class="poster-link" href="${esc(url)}" target="_blank">查看原帖 / 元投稿へ →</a>` : ''}
+                </div>
+            `;
+        }
+
+        // 从无到有 / 作画资料：链接清单（场景名 · 前导虚线 · 箭头）
+        function renderSketch(item) {
+            const url = firstUrl(item.details.source);
+            const label = (item.content || '').replace(/^从无到有[\s—\-－–~～]*/, '') || (item.content || '');
+            return `
+                <a class="sketch-item" id="entry-${item._i}"${url ? ` href="${esc(url)}" target="_blank"` : ''}>
+                    <span class="sketch-name">${esc(label)}</span>
+                    <span class="sketch-leader"></span>
+                    <span class="sketch-arrow">→</span>
+                </a>
+            `;
+        }
+
+        // 颜文字：密集画廊，整格点击跳原帖
+        function renderKao(item) {
+            const url = firstUrl(item.details.source);
+            const text = (item.content || '').replace(/^顔文字\s*[:：]\s*/, '');
+            return `
+                <a class="kao-card" id="entry-${item._i}"${url ? ` href="${esc(url)}" target="_blank"` : ''} title="点击查看原帖 / クリックで元投稿へ">
+                    <span class="kao-text">${esc(text)}</span>
+                </a>
+            `;
+        }
+
+        // 颜文字子分组标题
+        function kaoSubHead(title, count) {
+            return `
+                <div class="kao-subhead">
+                    <span>${title}</span>
+                    <span class="kao-cnt">${count}</span>
+                </div>
+            `;
+        }
+
+        // FA 同人免责声明文案（颜文字区横幅与单条小标签共用，保持一致）
+        const FA_WARN_CN = '官方转发同人作品（FA）时发表的文字，是官方就同人内容给出的一些设定和看法，不一定是最终设定，请以最终官方设定集为准。介意同人内容的请谨慎查看。';
+        const FA_WARN_JP = '公式が二次創作（ファンアート）をリポストした際に投稿した文章で、二次創作の内容について公式が示した設定や見解です。必ずしも最終的な設定とは限らないため、最終的な公式設定資料集を基準としてください。二次創作の内容が気になる方は、慎重にご覧くださいね。';
+        const FA_WARN_NOTE = '※ 此翻译由 Claude AI 辅助完成 / 翻訳：Claude AI';
+
+        // FA 同人警告横幅（颜文字 FA 子组顶部）
+        function faWarning() {
+            return `
+                <div class="fa-warning">
+                    <div class="fa-warn-cn">⚠️ 关于 FA（同人作品）：${FA_WARN_CN}</div>
+                    <div class="fa-warn-jp">⚠️ FA（二次創作）について：${FA_WARN_JP}</div>
+                    <div class="fa-warn-note">${FA_WARN_NOTE}</div>
+                </div>
+            `;
+        }
+
+        // FA 同人小标签（散落在时间轴/其他资料里的纯 FA 条目，点击展开免责声明）
+        function faBadge() {
+            return `
+                <details class="fa-mini">
+                    <summary>⚠️ 同人FA / 二次創作</summary>
+                    <div class="fa-mini-body">
+                        <div class="fa-warn-cn">${FA_WARN_CN}</div>
+                        <div class="fa-warn-jp">${FA_WARN_JP}</div>
+                        <div class="fa-warn-note">${FA_WARN_NOTE}</div>
+                    </div>
+                </details>
+            `;
+        }
+
+        // 晚安图时间线：左侧日期 · 竖线 · 右侧夜间卡片
+        function renderNight(item) {
+            const url = firstUrl(item.details.source);
+            const text = (item.content || '').replace(/^顔文字\s*[:：]\s*/, '');
+            const date = item.details.date;
+            return `
+                <div class="night-row" id="night-${item._i}">
+                    <div class="night-date">${date ? esc(date) : '日期未知'}</div>
+                    <div class="night-main">
+                        <div class="night-card">
+                            <span class="night-text">${esc(text)}</span>
+                        </div>
+                        <div class="night-actions">
+                            <button class="night-act" data-copy="${esc(text)}" onclick="copyText(this.dataset.copy, this)">复制颜文字 / コピー</button>
+                            ${url ? `<a class="night-act" href="${esc(url)}" target="_blank">查看原帖 / 元投稿へ →</a>` : ''}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderItem(item) {
+            return `
+                <div class="item" id="entry-${item._i}">
                     ${item.time ? `
                         <div class="timeline-marker">
                             <div class="timeline-time">⏱ ${item.time}</div>
@@ -827,6 +1502,7 @@
                     `}
                     <div class="item-body">
                         <div class="item-content">${item.content}</div>
+                        ${item.type && item.type.includes('FA') ? faBadge() : ''}
                         <button class="translate-btn" onclick="copyText(\`${item.content.replace(/`/g, '\\`').replace(/\$/g, '\\$')}\`, this)" style="margin-top: 8px; margin-bottom: 15px;">
                             复制原文 / コピー
                         </button>
@@ -834,8 +1510,8 @@
                         ${item.details.translation ? `
                             <div class="detail-section">
                                 <div class="detail-label">日语翻译 / 日本語翻訳</div>
-                                <div class="detail-text translation-source" data-index="${index}">${item.details.translation}</div>
-                                <div class="translate-note">※ 此翻译由 Claude AI 辅助完成 / Claude AIによる翻訳補助</div>
+                                <div class="detail-text translation-source" data-index="${item._i}">${item.details.translation}</div>
+                                <div class="translate-note">※ 此翻译由 Claude AI 辅助完成 / 翻訳：Claude AI</div>
                                 <a class="translate-btn" href="https://translate.google.com/?sl=zh-CN&tl=ja&text=${encodeURIComponent(item.content)}&op=translate" target="_blank">
                                     Google翻訳
                                 </a>
@@ -853,7 +1529,7 @@
                         ` : ''}
                         
                         ${(item.details.noteCN || item.details.noteJP) ? `
-                            <div class="note-section" data-index="${index}">
+                            <div class="note-section" data-index="${item._i}">
                                 <div class="note-toggle">
                                     <span>个人补充和推测 / 個人的な補足と推測</span>
                                     <span class="note-hint">点击展开 / クリックして展開</span>
