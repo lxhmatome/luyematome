@@ -224,6 +224,24 @@
             margin-bottom: 3px;
         }
 
+        /* 古早个人网站风格的小标记 new! / updated */
+        .li-tag {
+            font-family: 'SF Mono', 'Consolas', 'Courier New', monospace;
+            font-size: 0.62em;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            vertical-align: super;
+            margin-left: 4px;
+        }
+
+        .li-tag.is-new {
+            color: #e5534b;
+        }
+
+        .li-tag.is-upd {
+            color: #4a7fc0;
+        }
+
         .notice-btn {
             display: inline-block;
             margin-top: 8px;
@@ -977,12 +995,12 @@
                         <p>这里是个人自发创建的非官方鹿野中心资料库。</p>
                         <p><strong>本站内容包括：</strong></p>
                         <ul class="notice-list">
-                            <li>官方补充设定</li>
-                            <li>电影中的有趣场景及容易被忽略的细节</li>
-                            <li>官方晚安图</li>
-                            <li>官方海报</li>
-                            <li>颜文字系列</li>
-                            <li>从无到有（分镜·原画·动画）</li>
+                            <li>官方补充设定 <span class="li-tag is-upd">updated</span></li>
+                            <li>电影中的有趣场景及容易被忽略的细节 <span class="li-tag is-upd">updated</span></li>
+                            <li>官方晚安图 <span class="li-tag is-new">new!</span></li>
+                            <li>官方海报 <span class="li-tag is-new">new!</span></li>
+                            <li>颜文字系列 <span class="li-tag is-new">new!</span></li>
+                            <li>从无到有（分镜·原画·动画） <span class="li-tag is-new">new!</span></li>
                         </ul>
                         <p><strong>⚠️ 注意 ⚠️</strong></p>
                         <ul class="notice-list">
@@ -1008,12 +1026,12 @@
                         <p>ここは個人で作成した非公式の鹿野中心資料サイトです。</p>
                         <p><strong>掲載内容：</strong></p>
                         <ul class="notice-list">
-                            <li>公式の補足設定</li>
-                            <li>映画の中の面白いシーンや見落としがちなディテール</li>
-                            <li>公式おやすみイラスト</li>
-                            <li>公式ポスター</li>
-                            <li>顔文字シリーズ</li>
-                            <li>絵コンテから完成まで</li>
+                            <li>公式の補足設定 <span class="li-tag is-upd">updated</span></li>
+                            <li>映画の中の面白いシーンや見落としがちなディテール <span class="li-tag is-upd">updated</span></li>
+                            <li>公式おやすみイラスト <span class="li-tag is-new">new!</span></li>
+                            <li>公式ポスター <span class="li-tag is-new">new!</span></li>
+                            <li>顔文字シリーズ <span class="li-tag is-new">new!</span></li>
+                            <li>絵コンテから完成まで <span class="li-tag is-new">new!</span></li>
                         </ul>
                         <p><strong>⚠️ 閲覧前の注意 ⚠️</strong></p>
                         <ul class="notice-list">
@@ -1269,9 +1287,23 @@
             ['小黑', '小黒', 'シャオヘイ', 'xiaohei'],
             ['无限', '無限', '∞', 'ムゲン', 'mugen'],
             ['鹿野', 'ルーイエ', 'luye'],
-            ['皆逆荒', 'ジェーニーホアン', 'jienihuang'],
             ['泽宇', '澤宇', 'ジーユー', 'zeyu'],
-            ['晴岚', '晴嵐', 'qinglan']
+            ['皆逆荒', 'ジエニーホアン', 'ジェーニーホアン', 'jienihuang'],
+            ['晴岚', '晴嵐', 'qinglan'],
+            // 以下据用户提供的人物对照表补充，仅收录 tag 中实际出现的角色
+            ['池年', 'チーネン'],
+            ['灵遥', 'リンヤオ'],
+            ['哪吒', 'ナタ'],
+            ['芷清', 'ジーチン'],
+            ['甲', 'コウ'],
+            ['乙', 'オツ'],
+            ['丁', 'ディン'],
+            ['郑馆长', '郑信毅', '鄭信毅', 'ジョンシンイー'],
+            ['雨笛', 'ユーディ'],
+            ['静一', 'ジンイー'],
+            ['西木子', '西木', 'シームーズ'],
+            ['潘婧', '潘靖', 'パンジン'],
+            ['鸠老', 'キュー爺']
         ];
 
         function normalizeSearchTerm(term) {
