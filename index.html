@@ -481,6 +481,7 @@
         }
 
         .detail-link {
+            display: block;
             color: #8b7a9b;
             text-decoration: none;
             word-break: break-all;
@@ -1035,18 +1036,18 @@
                         </ul>
                         <p><strong>⚠️ 閲覧前の注意 ⚠️</strong></p>
                         <ul class="notice-list">
-                            <li>ネタバレを含みます！</li>
-                            <li>これまでの妄想が崩れる可能性があります！</li>
-                            <li>自分で映画からディテールを発見したい方は、ここから先を見ないことをお勧めします！</li>
-                            <li>明確な出典がある公式情報のみを掲載しています</li>
-                            <li>映画のシーンについては、画面に映っている事実のみを客観的に述べ、個人的な解釈は加えていません</li>
-                            <li>私個人の推測や考えは各項目の下に折りたたんで隠してあります。ご自身の考えに影響を与える可能性があるため、慎重に開いてくださいね。</li>
+                            <li>ネタバレを含みます</li>
+                            <li>これまでの妄想が崩れてしまうかもしれません</li>
+                            <li>自分で映画からいろいろなディテールを見つけたい方は、ここから先は見ないことをおすすめします</li>
+                            <li>このサイトでは、出典がはっきりしている公式情報のみを掲載しています</li>
+                            <li>映画のシーンについては、画面に映っていることをそのまま客観的に書いていて、個人的な解釈は加えていません</li>
+                            <li>私自身の推測や考えは、各項目のいちばん下に折りたたんで隠してあります。ご自身の見方に影響してしまうかもしれないので、開くときはご注意くださいね</li>
                         </ul>
 
-                        <p><strong>翻訳について：</strong>日本語が得意ではないため、現在日本語訳はClaude AIの力を借りて翻訳しています。サイトのGoogle翻訳機能もご利用いただけますし、テキストを直接コピーしてご自身で翻訳していただくことも可能です。あと吹き替え版や字幕版を見たことがないため、日本語の台詞の原文がわかりません。そのため、台詞に関する日本語翻訳は公式版と異なる場合があります。
+                        <p><strong>翻訳について：</strong>日本語があまり得意ではないので、日本語訳はClaude AIを使って翻訳しています。サイト内のGoogle翻訳機能をご利用いただいたり、テキストをコピーしてご自身で翻訳していただくこともできます。また、吹替版・字幕版を見たことがなく、日本語のセリフの原文が分からないため、セリフの翻訳は公式のものと異なる場合があります。
                         </p>
-                        <p>元々は自分用の参考資料としてまとめていたものですが、気づいたら内容が増えてきたので、サイトとして整理しました。この資料サイトを通じて、皆さんが鹿野というキャラクターをもっと深く知ることができたら嬉しいです！</p>
-                        <p>ご質問やご意見がございましたら、お気軽にDMでご連絡ください。Xアカウント：@biymon3</p>
+                        <p>もともとは自分用の資料としてまとめていたものですが、気づけば内容がどんどん増えていったので、こうしてサイトとして整理しました。このサイトを通して、鹿野というキャラクターについてより深く知ってもらえたら嬉しいです！</p>
+                        <p>ご質問・ご意見などがありましたら、お気軽にDMまでご連絡ください。Xアカウント：@biymon3</p>
                     </div>
                     <div class="notice-note">※ 此翻译由 Claude AI 辅助完成 / 翻訳：Claude AI</div>
                 </div>
@@ -1067,15 +1068,17 @@
                                 <li>新增「晚安图时间线」，按发布日期排列</li>
                                 <li>新增「从无到有」</li>
                                 <li>官方海报整理完成</li>
+                                <li>修改了部分设定的说明表述</li>
                             </ul>
                         </div>
                         <div class="notice-lang">
                             <div class="notice-lang-label">日本語</div>
                             <ul class="notice-list">
                                 <li>「顔文字シリーズ」コーナーを新設。公式がリポストしたファンアート・公式スタンプごとに分類</li>
-                                <li>「おやすみイラスト タイムライン」を新設。投稿日順に配置</li>
+                                <li>「おやすみイラスト タイムライン」を新設、投稿日順に整理</li>
                                 <li>「絵コンテから完成まで」を新設</li>
                                 <li>公式ポスターの整理が完了</li>
+                                <li>一部の設定について、説明の表現を修正</li>
                             </ul>
                         </div>
                     </div>
@@ -1367,15 +1370,15 @@
             if (c.kao.length > 0) {
                 html += sectionHeader('kao-section', '(｡•́‿•̀｡) 颜文字系列 / 顔文字シリーズ', '点击跳转原帖 / クリックで元投稿へ');
 
+                if (c.kaoSticker.length > 0) {
+                    html += kaoSubHead('官方表情包 / 公式スタンプ', c.kaoSticker.length);
+                    html += '<div class="kao-grid kao-grid-sticker">' + c.kaoSticker.map(renderKao).join('') + '</div>';
+                }
+
                 if (c.kaoFA.length > 0) {
                     html += kaoSubHead('官方转发FA / 公式がリポストしたファンアート', c.kaoFA.length);
                     html += faWarning();
                     html += '<div class="kao-grid">' + c.kaoFA.map(renderKao).join('') + '</div>';
-                }
-
-                if (c.kaoSticker.length > 0) {
-                    html += kaoSubHead('官方表情包 / 公式スタンプ', c.kaoSticker.length);
-                    html += '<div class="kao-grid kao-grid-sticker">' + c.kaoSticker.map(renderKao).join('') + '</div>';
                 }
 
                 if (c.kaoOther.length > 0) {
@@ -1410,8 +1413,8 @@
 
         function firstUrl(source) {
             if (!source) return null;
-            const u = source.split('\n')[0].trim();
-            return u.startsWith('http') ? u : null;
+            const m = source.match(/https?:\/\/\S+/);
+            return m ? m[0] : null;
         }
 
         function sectionHeader(id, title, subtitle) {
@@ -1553,8 +1556,10 @@
                         ${item.details.source ? `
                             <div class="detail-section">
                                 <div class="detail-label">引用源 / 出典</div>
-                                ${item.details.source.startsWith('http') ? 
-                                    `<a href="${item.details.source.split('\n')[0]}" target="_blank" class="detail-link">${item.details.source.replace(/\n/g, '<br>')}</a>` :
+                                ${item.details.source.startsWith('http') ?
+                                    (item.details.source.match(/https?:\/\/\S+/g) || []).map(s =>
+                                        `<a href="${s}" target="_blank" class="detail-link">${s}</a>`
+                                    ).join('') :
                                     `<div class="detail-text">${item.details.source}</div>`
                                 }
                             </div>
