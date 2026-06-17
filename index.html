@@ -678,6 +678,7 @@
         }
 
         .kao-card {
+            position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -701,6 +702,29 @@
         .kao-text {
             font-size: 0.9em;
             line-height: 1.5;
+            /* 长按 / 单击即可整段选中，方便原生复制（老机型也支持） */
+            -webkit-user-select: all;
+            user-select: all;
+            cursor: pointer;
+        }
+
+        /* 「看原帖」收成右上角小箭头，低调；长按颜文字本体即可复制 */
+        .kao-src {
+            position: absolute;
+            top: 0;
+            right: 0;
+            padding: 5px 7px;
+            font-size: 0.85em;
+            line-height: 1;
+            color: #c4b7d4;
+            text-decoration: none;
+            transition: color 0.15s;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+
+        .kao-src:hover {
+            color: #8b7a9b;
         }
 
         /* 颜文字子分组标题 */
@@ -992,7 +1016,7 @@
             <div class="notice-content">
                 <div class="notice-lang">
                     <div class="notice-lang-label">中文</div>
-                    <div class="notice-text">
+                    <div class="notice-text" id="notice-text-cn">
                         <p>这里是个人自发创建的非官方鹿野中心资料库。</p>
                         <p><strong>本站内容包括：</strong></p>
                         <ul class="notice-list">
@@ -1017,7 +1041,7 @@
                         <p><strong>📮 联系方式：</strong>如果有任何问题或建议请直接私信我。X账号：@biymon3</p>
 
                     </div>
-                    <a class="notice-btn" href="https://translate.google.com/" target="_blank">
+                    <a class="notice-btn" id="notice-translate" href="https://translate.google.com/" target="_blank">
                         Google翻訳
                     </a>
                 </div>
@@ -1456,9 +1480,10 @@
             const url = firstUrl(item.details.source);
             const text = (item.content || '').replace(/^顔文字\s*[:：]\s*/, '');
             return `
-                <a class="kao-card" id="entry-${item._i}"${url ? ` href="${esc(url)}" target="_blank"` : ''} title="点击查看原帖 / クリックで元投稿へ">
+                <div class="kao-card" id="entry-${item._i}" title="长按可复制 / 長押しでコピー">
                     <span class="kao-text">${esc(text)}</span>
-                </a>
+                    ${url ? `<a class="kao-src" href="${esc(url)}" target="_blank" title="查看原帖 / 元投稿へ" aria-label="查看原帖 / 元投稿へ">↗</a>` : ''}
+                </div>
             `;
         }
 
@@ -1601,6 +1626,16 @@
             searchTerm = e.target.value;
             render();
         });
+
+        // 给「阅前须知」的 Google 翻译按钮带上须知正文（中文→日文），避免跳转到空白页
+        (function () {
+            const el = document.getElementById('notice-text-cn');
+            const btn = document.getElementById('notice-translate');
+            if (el && btn) {
+                const txt = el.innerText.trim();
+                btn.href = 'https://translate.google.com/?sl=zh-CN&tl=ja&op=translate&text=' + encodeURIComponent(txt);
+            }
+        })();
 
         // 页面加载时执行
         loadData();
